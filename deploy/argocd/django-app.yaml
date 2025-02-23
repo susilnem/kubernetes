@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: django-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/susilnem/docker-drf-postgresql-gunicorn-nginx.git
+    targetRevision: main
+    path: helm
+    helm:
+      valueFiles:
+        - ./values/django-app-values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

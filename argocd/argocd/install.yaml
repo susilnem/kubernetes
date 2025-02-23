@@ -7,7 +7,7 @@ repositories:
 releases:
   - name: argocd
     namespace: argocd
-    createNamespace: true
+    createNamespace: false
     labels:
       app: argocd
     chart: argo/argo-cd

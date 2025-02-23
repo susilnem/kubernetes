@@ -1,0 +1,15 @@
+# ArgoCD values.yaml
+
+global:
+  domain: argocd.example.com
+
+certificate:
+  enabled: false
+
+server:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+
+dex:
+  enabled: true
