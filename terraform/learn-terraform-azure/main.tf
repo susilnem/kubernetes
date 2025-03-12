@@ -1,21 +1,11 @@
-terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "~> 4.22.0"
-    }
-  }
-  required_version = ">= 1.1.0"
-}
-
-provider "azurerm" {
-  features {}
+resource "random_pet" "rg_name" {
+  prefix = var.resource_group_name_prefix
 }
 
 # Create a resource group
 resource "azurerm_resource_group" "resource_group" {
-  name     = "testSushilResourceGroup"
-  location = "East US"
+  name     = var.resource_group_name
+  location = var.resource_group_location
 
   tags = {
     Environment = "Terraform Learn"
